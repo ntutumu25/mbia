@@ -1,0 +1,33 @@
+<nav class="navbar bg-dark navegation-container">
+  <div class="container-fluid">
+    <a href="/" class="navbar-brand text-light">MBIA</a>
+
+    {{#if user}}
+    <div class="item-menu">
+      
+      <a class="text-light" href="/admin/list-users"><i class="fa-sharp fa-solid fa-users"></i></a>
+
+      <div class="dropdown " style="margin-right: 50px;">
+        <p class=" dropdown-toggle text-light" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="fa-sharp fa-solid fa-user"></i>
+          {{!-- {{user.name}} --}}
+        </p>
+        <ul class="dropdown-menu bg-dark">
+          <li style=""><a class="dropdown-item text-light" href="/users/space">Perfil</a></li>
+          <li><a class="dropdown-item text-light" href="/auth/logout">Logout</a></li>
+          
+        </ul>
+      </div>
+    </div>
+    
+      
+
+    {{else}}
+    <div class="item-menu">
+      <a class="text-light" href="/auth/login">Login</a>
+      <a class="text-light" href="/auth/register">Register</a>
+    </div>
+
+    {{/if}}
+  </div>
+</nav>

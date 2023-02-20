@@ -1,0 +1,12 @@
+/* 
+ ESTILOS DE LA VISTA DE LISTAR USUARIOS
+*/
+.container-table{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:center;
+    background-color: aqua;
+}
+
+/* FIN DE LOS ESTILOS */

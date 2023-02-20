@@ -1,0 +1,41 @@
+<div class="register-container">
+ {{#each errors}}
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    {{text}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+  {{/each}}
+
+  <div class="card bg-black text-white tarjetaForm">
+    <div class="card-header ">
+      <h4 class="text-center">
+        Account Register
+      </h4>
+    </div>
+    <div class="card-body">
+      <form action="/auth/register" method="POST">
+        <div class="mb-3">
+          <input type="text" required class="form-control bg-dark text-white" name="name" placeholder="Name"
+            value="{{name}}" />
+        </div>
+        <div class="mb-3">
+          <input type="email" required class="form-control bg-dark text-white" name="email" placeholder="Email" />
+        </div>
+        <div class="mb-3">
+          <input type="password" required class="form-control bg-dark text-white" name="password"
+            placeholder="Password" />
+        </div>
+        <div class="mb-3">
+          <input type="password" required class="form-control bg-dark text-white" name="confirm_password"
+            placeholder="Confirm Password" />
+        </div>
+        <button class="btn btn-success col-12">
+          Signup
+        </button>
+      </form>
+    </div>
+    <p class="text-center">Already Have an Account?
+      <a href="/auth/login" class="text-info">Login</a>
+    </p>
+  </div>
+</div>

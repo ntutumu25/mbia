@@ -1,0 +1,131 @@
+<div class="contenedor-principal">
+    <div class="encabezado">
+        <h1>My workspace</h1>
+    </div>
+
+    <div class="cuerpo mt-5 pb-3">
+        <div class="row">
+            <div class="col-4">
+                <div class="card card1" style="max-width: 540px;">
+                    <div class="row g-0" >
+                        <div class="col-md-4">
+                            <img src={{user.path}} class="img-fluid rounded-start" alt="...">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h4 class="card-title">INFO</h4>
+                                <h5>Username: <span> {{ usuario.name}}</span> </h5>
+                                <h5>Email: <span> {{usuario.email}}</span></h5>
+                                <h5>Data up: <span> {{fechaUser}}</span></h5>
+                                <button class="btn btn-primary col-12" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal">
+                                    Update info</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+               
+              </div>
+
+        <div class="container-post">
+            <div class="postForm">
+                <button class="btn btn-success mb-3" data-bs-toggle="modal"
+                    data-bs-target="#addPostModal">Addpost</button>
+                
+                <div>
+                    <h3 class="text-light">My POSTS </i></h3>
+                </div>
+
+            </div>
+            <div class="post-card mt-3">
+                {{#each public}}
+
+                <div class="card m-2" style="width: 18rem;">
+                    <a href="{{image}}" target="_blank" style="text-decoration: none;">
+                        <img src={{image}} class="card-img-top" alt="...">
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title">{{title}}</h5>
+                        <p class="description">{{description}}</p>
+                        <p class="text-primary">{{date}}</p>
+                        <a class="btn btn-danger mt-2" href="/users/{{_id}}/delete">Delete</a>
+                    </div>
+
+                </div>
+
+                {{/each}}
+            </div>
+        </div>
+    </div>
+
+
+    {{!-- modal updateInfoUser --}}
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Update info</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="/users/update/{{usuario.id}}?_method=PUT" method="POST">
+                        <input type="hidden" name="_method" value="PUT" />
+                        <div class="mb-3">
+                            <input type="text" required class="form-control bg-dark text-white" name="name"
+                                placeholder="Name" value="{{usuario.name}}" />
+                        </div>
+                        <div class="mb-3">
+                            <input type="email" readonly required class="form-control bg-dark text-white" name="email"
+                                placeholder="Email" value="{{usuario.email}}" />
+                        </div>
+
+                        <button class="btn btn-success col-12">
+                            Send
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    {{!-- modal addPost --}}
+                <div class="modal fade" id="addPostModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Add post</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="/user/post" method="POST" enctype="multipart/form-data">
+                                    {{!-- <input type="hidden" name="_method" value="PUT" /> --}}
+                                    <div class="mb-3">
+                                        <input type="file" name="image" class="custom-file-input" id="inputGroupFile02">
+                                    </div>
+                                    <div class="mb-3">
+                                        <input type="text" required class="form-control bg-dark text-white" name="title"
+                                            placeholder="title" />
+                                    </div>
+                                    <div class="mb-3">
+
+                                        <textarea name="description" required placeholder="description"
+                                            class="form-control bg-dark text-white"></textarea>
+                                    </div>
+
+                                    <button type="submit" class="btn btn-success col-12">
+                                        Send
+                                    </button>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+</div>

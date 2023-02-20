@@ -6,8 +6,8 @@
   "scripts": {
     "dev": "nodemon src/app.js"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["mbia"],
+  "author": "Fortunato Clemente Ntutumu Obono",
   "license": "ISC",
   "dependencies": {
     "@handlebars/allow-prototype-access": "^1.0.5",
